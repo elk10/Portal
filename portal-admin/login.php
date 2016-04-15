@@ -5,7 +5,8 @@ if ( !isset($_POST['submit']) ) {
 	echo "Please log in";
 	die("<br><a href='index.php'>Login</a>");
 }
-// create cariables
+
+// create variables
 $username = $_POST['username'];
 $passwordAttempt = $_POST['password'];
 $hashPassword = md5 ($passwordAttempt);
@@ -35,7 +36,7 @@ while($row = mysqli_fetch_assoc($result)){
 	$password = $row['password'];
 	if($password != $hashPassword){
 		echo"Incorrect username & password combination please try again......";
-		die("<br /><a href='/index.php'>Go back</a>");
+		die("<br /><a href='home.php'>Go back</a>");
 	}
 	else{
 //All checks complete session starting

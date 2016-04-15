@@ -1,65 +1,46 @@
+<?php include ('header.php'); ?>
+<body>
+<div id="site-container">
+<div class="site-inner">
+<div class="student-record">
 <?php
 SESSION_START();
 if(!isset($_SESSION['username'])){
-	echo"Please log in to continue";
-	die("<br /><a href='index.php'>Log In</a>");
+    echo"Please log in to continue";
+    die("<br /><a href='index.php'>Log In</a>");
 }
 $username = $_SESSION['username'];
 include ('connect.php');
 $query = ("SELECT * FROM users WHERE username ='$username'");
 $result = mysqli_query($connect, $query);
 while($row = mysqli_fetch_assoc($result)){
-$email = $row['email'];
-echo"Hello <b>$username</b><br />";
 $id = $row['user_id'];
-
-echo "$id <br>";
 
 }
 
 
-$sql = "SELECT * FROM students INNER JOIN users ON students.student_id = users.student_id WHERE user_id = '$id'";
+$sql = "SELECT * FROM students INNER JOIN users ON students.student_name = users.student_name WHERE user_id = '$id' ";
 $result = $connect->query($sql);
-$student_name = $row['student_name'];
 
+echo '<h1>Home</h1>';
+
+echo '<h2>Personal Details:</h2>';
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "name: " . $row["student_id"]. " - lname: " . $row["student_name"].  "<br><br>";
+        echo "<b>Name:</b> " . $row["student_name"].  "<br>";
+        //reverse default mysql date format.
+        echo "<b>Date of Birth:</b> " . implode('-', array_reverse(explode( '-', $row['date_of_birth']))).  "<br><br>";
     }
 } else {
     echo "0 results";
 }
+echo '<h2>Grades:</h2>';
 ?>
-
-<ul>
-ENGLISH:
+<ul class="grade-list">
+<strong>English:</strong>
 <?php
-$sql = "SELECT *  FROM subjects INNER JOIN students ON students.student_name = subjects.student_name  INNER JOIN users ON students.student_id = users.student_id WHERE user_id = '$id' ";
-
-$result = $connect->query($sql);
-
-if ($result->num_rows > 0) {
- // output data of each row
-$i = 0;
-    while($row = $result->fetch_assoc()) {
- $i++;
- echo '<li>';
-$english_grade = $row['english_grade'];
-echo $english_grade;
-echo '</li>';
-
-        //echo "Result: " . $row["subject_name"]. " - lname: " . $row["grade_name"].  "<br>";
-    }
-} else {
-    echo "0 results";
-}
-?>
-</ul>
-<ul>
-WELSH
-<?php
-$sql = "SELECT *  FROM subjects INNER JOIN students ON students.student_name = subjects.student_name  INNER JOIN users ON students.student_id = users.student_id WHERE user_id = '$id' ";
+$sql = "SELECT *  FROM grades_subjects INNER JOIN students ON students.student_name = grades_subjects.student_name  INNER JOIN users ON students.student_name = users.student_name WHERE user_id = '$id' AND subject_name = 'English'";
 
 $result = $connect->query($sql);
 
@@ -71,7 +52,31 @@ $i = 0;
  echo '<li>';
 $english_grade = $row['grade_name'];
 echo $english_grade;
-echo '</li>';
+echo '</li>,';
+
+        //echo "Result: " . $row["subject_name"]. " - lname: " . $row["grade_name"].  "<br>";
+    }
+} else {
+    echo "0 results";
+}
+?>
+</ul>
+<ul class="grade-list">
+<strong>Welsh:</strong>
+<?php
+$sql = "SELECT *  FROM grades_subjects INNER JOIN students ON students.student_name = grades_subjects.student_name  INNER JOIN users ON students.student_name = users.student_name WHERE user_id = '$id' AND subject_name = 'Welsh'";
+
+$result = $connect->query($sql);
+
+if ($result->num_rows > 0) {
+ // output data of each row
+$i = 0;
+    while($row = $result->fetch_assoc()) {
+ $i++;
+ echo '<li>';
+$welsh_grade = $row['grade_name'];
+echo $welsh_grade;
+echo '</li>,';
 
         //echo "Result: " . $row["subject_name"]. " - lname: " . $row["grade_name"].  "<br>";
     }
@@ -82,13 +87,63 @@ echo '</li>';
 
 ?>
 </ul>
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+<ul class="grade-list">
+<strong>History:</strong>
+<?php
+$sql = "SELECT *  FROM grades_subjects INNER JOIN students ON students.student_name = grades_subjects.student_name  INNER JOIN users ON students.student_name = users.student_name WHERE user_id = '$id' AND subject_name = 'History'";
 
+$result = $connect->query($sql);
+
+if ($result->num_rows > 0) {
+ // output data of each row
+$i = 0;
+    while($row = $result->fetch_assoc()) {
+ $i++;
+ echo '<li>';
+$history_grade = $row['grade_name'];
+
+echo $history_grade;
+echo '</li>,';
+
+        //echo "Result: " . $row["subject_name"]. " - lname: " . $row["grade_name"].  "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+
+?>
+</ul>
+<ul class="grade-list">
+<strong>Mathematics:</strong>
+<?php
+$sql = "SELECT *  FROM grades_subjects INNER JOIN students ON students.student_name = grades_subjects.student_name  INNER JOIN users ON students.student_name = users.student_name WHERE user_id = '$id' AND subject_name = 'Mathematics'";
+
+$result = $connect->query($sql);
+
+if ($result->num_rows > 0) {
+ // output data of each row
+$i = 0;
+    while($row = $result->fetch_assoc()) {
+ $i++;
+ echo '<li>';
+$math_grade = $row['grade_name'];
+echo $math_grade;
+echo '</li>,';
+
+        //echo "Result: " . $row["subject_name"]. " - lname: " . $row["grade_name"].  "<br>";
+    }
+} else {
+    echo "0 results";
+}
+
+
+?>
+</ul>
+
+</div>
+</div>
+</div>
 <a href="logout.php">Log Out Btn</a>
 </body>
 </html>

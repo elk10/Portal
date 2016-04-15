@@ -1,0 +1,142 @@
+
+body {
+  width: 1200px;
+  margin: 0 auto;
+}
+#site-container {
+  min-height: 1200px;
+  width: 800px;
+  margin: 0 auto;
+}
+.site-inner {
+  min-height: 1200px;
+  clear: left;
+}
+.logo{
+width: 328px;;
+margin: 0 auto;
+padding:20px 0 20px 0;
+}
+.logout {
+      float: right;
+    padding-top: 20px;
+}
+.navigation {
+  width: 800px;
+  margin: 0 auto;
+}
+nav ul {
+  -webkit-font-smoothing:antialiased;
+  text-shadow:0 1px 0 #FFF;
+    background: #ddd;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+nav li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    min-width: 25%;
+}
+nav a {
+    background: #ddd;
+    color: #444;
+    display: block;
+    font: bold 16px/50px sans-serif;
+    padding: 0 25px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+nav .dropdown:after {
+    content: ' ▶';
+}
+nav .dropdown:hover:after{
+  content:'\25bc'
+}
+nav li:hover a {
+    background: #ccc;
+}
+nav li ul {
+    float: left;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 35px;
+    visibility: hidden;
+    z-index: 1;
+    -webkit-transition: all .25s ease;
+       -moz-transition: all .25s ease;
+        -ms-transition: all .25s ease;
+         -o-transition: all .25s ease;
+            transition: all .25s ease;
+}
+nav li:hover ul {
+    opacity: 1;
+    top: 50px;
+    visibility: visible;
+}
+nav li ul li {
+    float: none;
+    width: 100%;
+}
+nav li ul a:hover {
+    background: #bbb;
+}
+
+/* Clearfix */
+
+.cf:after, .cf:before {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+.cf {
+    zoom:1;
+}​
+.student-record {
+  height: 200px;
+  width: 500px;
+  margin: 0 auto;
+  padding-top: 120px;
+
+}
+.student-record {
+  height: 200px;
+    width: 200px;
+  margin: 0 auto;
+    padding-top: 120px;
+}
+input[type="text"], input[type="date"], select
+ {
+  padding: 10px;
+  border: solid 5px #c9c9c9;
+  transition: border 0.3s;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus,
+input[type="text"].focus {
+  border: solid 5px #969696;
+}
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+input[type=submit] {
+    padding:5px 15px; 
+    background:#ccc; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
