@@ -10,7 +10,7 @@ if(!isset($_SESSION["username"]))
 <div id="page-wrapper">
 	<div id="page" class="container">
 		<div class="title">
-			<h2>Add Notes</h2>
+			<h2>Delete Notes</h2>
 		</div>
 		<form method="post">     
 			<table>
@@ -81,14 +81,12 @@ if(!isset($_SESSION["username"]))
 			</tr>
 		</table>
 		<?php
-		if (isset($_POST['add'])) {    
+		if (isset($_POST['Delete'])) {    
 			include ('connect.php');
 			$notes_name = $_POST['notes_name'];
 			$student_name = $_POST['student_name'];
 			if(!empty($notes_name) && !empty($student_name)) {
 				$sql = "DELETE FROM notes WHERE notes_name = '$notes_name'";
-
-				$sql = "DELETE FROM homework WHERE homework_name = '$homework_name'";
 				if(mysqli_query($connect, $sql)){
 					echo "<div class='success'>Records added successfully.</div>";
 				} else{

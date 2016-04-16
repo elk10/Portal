@@ -46,9 +46,9 @@ while($row = mysqli_fetch_assoc($result)){
 		header("location: admin/home.php");
 		die("");
 	}
-	else {
+	else if ($role == 'user') {
 		$_SESSION['username'] = $username;
-		header("location: test/home.php");
+		header("location: student/home.php");
 		die("");
 	}
 }

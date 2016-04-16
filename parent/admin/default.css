@@ -285,6 +285,7 @@ input[type=submit] {
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px; 
+    margin-bottom: 15px;
 }
 
 /*********************************************************************************/
@@ -785,10 +786,10 @@ nav {
 		text-align: center;
 		color: #FFFFFF;
 	}
-.error {
-	margin-top: 16px;
+.error, .warning, .success {
     padding: 10px;
-    width: 100%;
+	width: 327px;
+	margin: 0 auto;
     background-color: #ff471a;
     font-weight: bolder;
     border-radius: 0.50em;
@@ -801,34 +802,11 @@ nav {
     transition: all 0.35s ease-in-out;
 }	
 .warning {
-	margin-top: 16px;
-    padding: 10px;
-    width: 100%;
     background-color: #ffffb3;
-    font-weight: bolder;
-    border-radius: 0.50em;
-    box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-    border: solid 1px rgba(0,0,0,0.15);
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
-    -ms-transition: all 0.35s ease-in-out;
-    transition: all 0.35s ease-in-out;
+ 
 }
 .success {
-	margin-top: 16px;
-    padding: 10px;
-    width: 100%;
     background-color: #33ffad;
-    font-weight: bolder;
-    border-radius: 0.50em;
-    box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-    border: solid 1px rgba(0,0,0,0.15);
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
-    -ms-transition: all 0.35s ease-in-out;
-    transition: all 0.35s ease-in-out;
 }
 .logout {
     float: right;
